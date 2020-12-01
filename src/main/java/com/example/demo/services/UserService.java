@@ -6,5 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface UserService {
-    public void join(UserDto user);
+    public int join(UserDto user);
 }
