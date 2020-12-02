@@ -44,24 +44,23 @@
             $.ajax({
                 url: '/users',
                 type: 'POST',
-                data: JSON.stringify({userid: document.getElementById('userid').value,
-                                     password: document.getElementById('password').value,
-                                     name: document.getElementById('name').value}),
+                data : JSON.stringify({userid: document.getElementById('userid').value,
+                                       password: document.getElementById('password').value, 
+                                       name: document.getElementById('name').value}),
                 dataType: 'json',
                 contentType: 'application/json',
-                success: d =>{
+                success: d => {
                     if(d.name === 'FAILURE'){
-                        alert(`회원가입 실패`)
+                        alert(`실패`)
                     }else{
                         alert(`${d.name} 가입 성공`)
-                    }  
-            },
+                    }
+                },
                 error: e => {
                     alert(`${e} 을 이유로 전송실패`)
                 }
+            })
         })
-    })
-
         document.getElementById('cancel-btn')
         .addEventListener('click', e => {
             alert('취소 클릭')
