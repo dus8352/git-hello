@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table{border: 1px solid black}
+        table tr{border: 1px solid black}
+        table tr td{border: 1px solid black}
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form>
+    <tr>
+        <td>ID</td>
+        <td><input type="text" id="userid"></td>
+    </tr>
+        <tr>PW</tr>
+    <td><input type="text" id='password'></td>
+    <tr>
+        <td colspan=2>
+            <button id='login-btn'>로그인</button>
+        </td>
+    </tr>
+
+</form>
+    <script>
+    document.getElementById('login-btn')
+    .addEventListener("click", e => {
+    e.preventDefault()
+    alert('로그인시도')
+    $.ajax({
+        url: '/users/login',
+        type: 'POST',
+        data: JSON.stringify({
+            userid: document.getElementById('userid').value,
+            password: document.getElementById('password').value}),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: d=>{
+            if(d.name !== 'FAILURE'){
+                alert(`${d.name} 로그인 성공`)
+            }else{
+                alert(`로그인실패`)
+                document.getElementById('userid').value =''
+                document.getElementById('password').value =''
+            }
+
+        },
+        error: e => {
+            alert(`${e}을 이유로 실패`)
+        }
+    })
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Home</h1>
+    <a id='join' href="#">회원가입</a><span style='width: 50px'></span>
+    <a id="login" href="#">로그인</a>
+    <script>
+        document.getElementById('join')
+        .addEventListener("click", e=> {
+            location.href = '/forms/users/join'
+        })
+
+        document.getElementById('login')
+        .addEventListener("click", e => {
+            location.href = '/forms/users/login'
+        })
+    </script>
+</body>
+</html>
